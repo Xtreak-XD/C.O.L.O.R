@@ -1,0 +1,93 @@
+import pygame
+import random
+from pygame import mixer
+
+class RGame:
+    def __init__(self):
+        pygame.init()
+        mixer.init()
+
+        self.width, self.height = 1000, 600
+        self.screen = pygame.display.set_mode((self.width, self.height))
+
+        pygame.font.init()
+        self.font = pygame.font.SysFont("comicsans", 30)
+        self.font1 = pygame.font.SysFont("arial", 13)
+        self.font2 = pygame.font.SysFont("comicsans", 75)    
+
+        self.dodgeRainDropsUI = pygame.transform.scale(pygame.image.load("rainNEW.png"), (300, 200))
+        self.raindropsButton = pygame.Rect(360, self.height - 250, 300, 200)
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("homeIcon.jpg"), (50, 50))
+        self.homeIconButton = pygame.Rect(25, self.height - 75, 50, 50)
+
+        self.bigText = self.font2.render("R", 10, "black")
+
+        self.rainDropSpeed = 175
+        self.raindrops = []
+        self.droplet = pygame.transform.scale(pygame.image.load("drop.png"), (16, 18))
+        self.rainfall = pygame.event.custom_type()
+        pygame.time.set_timer(self.rainfall, self.rainDropSpeed)
+        self.lastDecrement = 0
+
+        self.seconds = 0 
+        self.startTicks = pygame.time.get_ticks()
+        self.clock = pygame.time.Clock()
+
+        self.color = (139, 0, 0)
+        self.text1 = self.font.render("Dodge the Raindrops", 10, "black")
+        self.text2 = self.font.render("YOU LOSE", 10, "white")
+
+
+    def checkClick(self, button):
+        mousePos = pygame.mouse.get_pos()
+        return button.collidepoint(mousePos)
+
+    def runGame(self):
+        run = True
+        while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if self.checkClick(self.homeIconButton):
+                        return "home"
+                if event.type == self.rainfall:
+                    rainfallCOORD = (random.randint(0, self.width), 0)
+                    self.raindrops.append((rainfallCOORD))
+                    
+            self.screen.fill(self.color)
+            self.screen.blit(self.text1, (self.width / 2 - self.text1.get_width() / 2, self.height - 50 - self.text1.get_height() / 2))
+            self.screen.blit(self.bigText, (self.width / 4 - self.text1.get_width() / 2, self.height - 80 - self.text1.get_height() / 2))
+            self.screen.blit(self.homeIconUi, (25, (self.height-75)))
+            playerX, playerY = pygame.mouse.get_pos()
+            pygame.draw.circle(self.screen, (0, 0, 55), (playerX, playerY), 15)
+
+            milliseconds = (pygame.time.get_ticks() - self.startTicks)
+            self.seconds = milliseconds // 1000
+            text3 = self.font.render(f"Time Alive: {self.seconds}", True, (0, 0, 0))
+            self.screen.blit(text3, (self.width / 2 - text3.get_width() / 2, 40))
+            
+            if self.seconds % 10 == 0 and self.seconds != self.lastDecrement and self.rainDropSpeed != 50:
+                self.lastDecrement = self.seconds
+                self.rainDropSpeed -= 25
+                pygame.time.set_timer(self.rainfall, self.rainDropSpeed)
+
+            for i, dropCoords in enumerate(self.raindrops):
+                dropCoords = list(dropCoords)
+                dropCoords[1] += 5
+                self.raindrops[i] = tuple(dropCoords)
+                self.screen.blit(self.droplet, self.raindrops[i])
+                if (dropCoords[0] - 15 <= pygame.mouse.get_pos()[0] <= dropCoords[0] + 16 + 15) and (dropCoords[1] - 15 <= pygame.mouse.get_pos()[1] <= dropCoords[1] + 12 + 15):
+                    self.screen.blit(self.text2, (self.width / 2 - self.text2.get_width() / 2, self.height / 2 - self.text2.get_height() / 2))
+                    pygame.display.update()
+                    pygame.time.delay(2000)
+                    return "home"
+                    self.run = False      
+
+            pygame.display.update()
+            self.clock.tick(60)
+        pygame.quit()
+
+if __name__ == "__main__":
+    game = RGame()
+    game.runGame()
