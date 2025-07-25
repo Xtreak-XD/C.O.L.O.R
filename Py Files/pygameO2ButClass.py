@@ -30,7 +30,7 @@ class OGame:
         self.bigText = self.font1.render("O", 50, "white")
         self.text1 = self.font1.render("Obby Escape", 10, "white")
         
-        self.homeIconUi = pygame.transform.scale(pygame.image.load("homeIcon.jpg"), (50, 50))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
         self.homeIconButton = pygame.Rect(25, self.h - 75, 50, 50)
         
         self.levelMaker()

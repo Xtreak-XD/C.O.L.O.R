@@ -18,10 +18,10 @@ class O1Game:
         self.playerWidth = 20
         self.playerHeight = 40
         
-        self.whackAMoleUi = pygame.transform.scale(pygame.image.load("ostrichNEW.png"), (300, 200))
+        self.whackAMoleUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/ostrichNEW.png"), (300, 200))
         self.whackAMoleButton = pygame.Rect((360, 50,300,200 ))
         
-        self.homeIconUi = pygame.transform.scale(pygame.image.load("homeIcon.jpg"), (50, 50))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
         self.homeIconButton = pygame.Rect(25, self.height - 75, 50, 50)
         
         self.bigText = self.font2.render("O", 10, "black")
@@ -38,8 +38,8 @@ class O1Game:
         self.destroyMole = pygame.event.custom_type()
         pygame.time.set_timer(self.destroyMole, 3300)
         
-        self.mole = pygame.transform.scale(pygame.image.load("mole.png"), (self.playerWidth + 50, self.playerHeight + 30))
-        mixer.music.load("fryingPanAudio.mp3")
+        self.mole = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/mole.png"), (self.playerWidth + 50, self.playerHeight + 30))
+        mixer.music.load("C.O.L.O.R/mp3 Files/fryingPanAudio.mp3")
 
     def checkClick(self, button):
         mousePos = pygame.mouse.get_pos()
@@ -60,8 +60,8 @@ class O1Game:
             self.destroyMole = pygame.event.custom_type()
             pygame.time.set_timer(self.destroyMole, 3300)
             
-            self.mole = pygame.transform.scale(pygame.image.load("mole.png"), (self.playerWidth + 50, self.playerHeight + 30))
-            mixer.music.load("fryingPanAudio.mp3")
+            self.mole = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/mole.png"), (self.playerWidth + 50, self.playerHeight + 30))
+            mixer.music.load("C.O.L.O.R/mp3 Files/fryingPanAudio.mp3")
             
             while self.run:
                 text2 = self.font.render("Score: " + str(self.score), 10, "black")
