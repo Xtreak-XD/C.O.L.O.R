@@ -1,5 +1,4 @@
 import pygame
-import os
 
 class OGame:
     def __init__(self):
@@ -31,11 +30,7 @@ class OGame:
         self.bigText = self.font1.render("O", 50, "white")
         self.text1 = self.font1.render("Obby Escape", 10, "white")
         
-        
-        currentDir = os.path.dirname(os.path.abspath(__file__))
-        self.imageFolder = os.path.join(currentDir, "..", "PNG Files")
-        
-        self.homeIconUi = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "homeIcon.jpg")), (50, 50))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
         self.homeIconButton = pygame.Rect(25, self.h - 75, 50, 50)
         
         self.levelMaker()

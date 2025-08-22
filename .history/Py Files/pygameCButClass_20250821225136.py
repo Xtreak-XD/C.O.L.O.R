@@ -1,7 +1,6 @@
 import pygame
 import random
 import math
-import os
 
 class CGame:
     def __init__(self):
@@ -12,11 +11,8 @@ class CGame:
         self.clock = pygame.time.Clock()
         self.bgColor = (0, 255, 255)
         self.runGamening = True
-        
-        currentDir = os.path.dirname(os.path.abspath(__file__))
-        imageFolder = os.path.join(currentDir, "..", "PNG Files")
-        
-        self.heart = pygame.image.load(os.path.join(imageFolder, "Heart.png")).convert_alpha()
+
+        self.heart = pygame.image.load("C.O.L.O.R/PNG Files/Heart.png").convert_alpha()
         self.heartWidth = self.heart.get_width()
 
         self.scoreFont = pygame.font.SysFont("Public Pixel", 30)
@@ -30,7 +26,7 @@ class CGame:
         self.enemySize = 15
         self.enemySpeed = 1.5
         
-        self.homeIconUi = pygame.transform.scale(pygame.image.load(os.path.join(imageFolder, "homeIcon.jpg")), (50, 50))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
         self.homeIconButton = pygame.Rect(25, self.h - 75, 50, 50)
 
         self.spawnFoods = pygame.USEREVENT + 1

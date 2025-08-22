@@ -1,4 +1,3 @@
-import os
 import pygame
 from pygame import mixer
 from pygame.font import SysFont
@@ -21,50 +20,15 @@ class GameMenu:
         self.font = SysFont("comicsans", 30)
         self.font1 = SysFont("arial", 13)
         self.font2 = SysFont("comicsans", 75)
-        
-        currentDir = os.path.dirname(os.path.abspath(__file__))
-        imageFolder = os.path.join(currentDir, "..", "PNG Files")
- 
+
         # Load images...
-        try:
-            self.rainbow = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "rainbow.jpg")),
-                (self.width, self.height)
-            )
-            self.chaseGameUi = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "chaseNEW.png")),
-                (300, 200)
-            )
-            self.ostrichWhackUi = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "ostrichNEW.png")),
-                (300, 200)
-            )
-            self.drawingGameUi = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "LayoutNEW.png")),
-                (300, 200)
-            )
-            self.obbyGameUi = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "obbyNEW.png")),
-                (300, 200)
-            )
-            self.raindropDodgeUi = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "rainNEW.png")),
-                (300, 200)
-            )
-            self.homeIconUi = pygame.transform.scale(
-                pygame.image.load(os.path.join(imageFolder, "homeIcon.jpg")),
-                (50, 50)
-            )
-        except pygame.error as e:
-            print(f"Error loading image: {e}")
-            # Optionally, create a placeholder surface so the game doesn't crash
-            self.rainbow = pygame.Surface((self.width, self.height))
-            self.chaseGameUi = pygame.Surface((300, 200))
-            self.ostrichWhackUi = pygame.Surface((300, 200))
-            self.drawingGameUi = pygame.Surface((300, 200))
-            self.obbyGameUi = pygame.Surface((300, 200))
-            self.raindropDodgeUi = pygame.Surface((300, 200))
-            self.homeIconUi = pygame.Surface((50, 50))
+        self.rainbow = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/rainbow.jpg"), (self.width, self.height))
+        self.chaseGameUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/chaseNEW.png"), (300, 200))
+        self.ostrichWhackUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/ostrichNEW.png"), (300, 200))
+        self.drawingGameUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/LayoutNEW.png"), (300, 200))  # This is the drawing game
+        self.obbyGameUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/obbyNEW.png"), (300, 200))
+        self.raindropDodgeUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/rainNEW.png"), (300, 200))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
 
         # Create buttons...
         self.chaseGameButton = pygame.Rect(25, 50, 300, 200)

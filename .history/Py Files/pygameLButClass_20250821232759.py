@@ -100,7 +100,7 @@ class LGame:
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_g:
                     if self.write:
-                        pygame.image.save(self.screen, os.path.join(self.imageFolder, "screenshot1.png"))
+                        pygame.image.save(self.screen, "C.O.L.O.R/PNG Files/screenshot1.png")
                         self.screenie = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "screenshot1.png")), (self.width, self.height))
                         self.write = False
                     else:

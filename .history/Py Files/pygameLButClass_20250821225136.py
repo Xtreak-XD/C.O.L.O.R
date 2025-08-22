@@ -1,5 +1,4 @@
 import pygame
-import os
 
 class LGame:
     def __init__(self):
@@ -20,16 +19,13 @@ class LGame:
         self.playerColor = "red"
 
         self.brushButton = pygame.Rect(900, 100, 24, 24)
-        
-        currentDir = os.path.dirname(os.path.abspath(__file__))
-        self.imageFolder = os.path.join(currentDir, "..", "PNG Files")
 
-        self.homeIconUi = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "homeIcon.jpg")), (50, 50))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
         self.homeIconButton = pygame.Rect(25, self.height - 75, 50, 50)
 
         self.screen.fill((235, 230, 250))
-        pygame.image.save(self.screen, os.path.join(self.imageFolder, "screenshot1.png"))
-        self.screenie = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "screenshot1.png")), (self.width, self.height))
+        pygame.image.save(self.screen, "C.O.L.O.R/PNG Files/screenshot1.png")
+        self.screenie = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/screenshot1.png"), (self.width, self.height))
 
         self.player = pygame.Rect((300, 250, 50, 50))
         self.playerVel = 1
@@ -51,7 +47,7 @@ class LGame:
         self.drawingGameUi()
 
     def drawingGameUi(self):
-        self.drawingGameUI = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "LayoutNEW.png")), (300, 200))
+        self.drawingGameUI = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/LayoutNEW.png"), (300, 200))
         self.drawingGameButton = pygame.Rect((695, 50, 300, 200))
 
     def coloredButton(self):
@@ -100,8 +96,8 @@ class LGame:
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_g:
                     if self.write:
-                        pygame.image.save(self.screen, os.path.join(self.imageFolder, "screenshot1.png"))
-                        self.screenie = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "screenshot1.png")), (self.width, self.height))
+                        pygame.image.save(self.screen, "C.O.L.O.R/PNG Files/screenshot1.png")
+                        self.screenie = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/screenshot1.png"), (self.width, self.height))
                         self.write = False
                     else:
                         self.write = True
@@ -110,8 +106,8 @@ class LGame:
 
         if keys[pygame.K_z]:
             self.screen.fill(self.color)
-            pygame.image.save(self.screen, os.path.join(self.imageFolder, "screenshot1.png"))
-            self.screenie = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "screenshot1.png")), (self.width, self.height))
+            pygame.image.save(self.screen, "C.O.L.O.R/PNG Files/screenshot1.png")
+            self.screenie = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/screenshot1.png"), (self.width, self.height))
 
         if keys[pygame.K_LEFT] and self.player.x - self.playerVel >= 0:
             self.player.x -= self.playerVel

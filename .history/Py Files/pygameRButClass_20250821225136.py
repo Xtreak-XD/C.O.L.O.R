@@ -1,7 +1,6 @@
 import pygame
 import random
 from pygame import mixer
-import os
 
 class RGame:
     def __init__(self):
@@ -15,20 +14,17 @@ class RGame:
         self.font = pygame.font.SysFont("comicsans", 30)
         self.font1 = pygame.font.SysFont("arial", 13)
         self.font2 = pygame.font.SysFont("comicsans", 75)    
-        
-        currentDir = os.path.dirname(os.path.abspath(__file__))
-        self.imageFolder = os.path.join(currentDir, "..", "PNG Files")
-        
-        self.dodgeRainDropsUI = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "rainNEW.png")), (300, 200))
+
+        self.dodgeRainDropsUI = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/rainNEW.png"), (300, 200))
         self.raindropsButton = pygame.Rect(360, self.height - 250, 300, 200)
-        self.homeIconUi = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "homeIcon.jpg")), (50, 50))
+        self.homeIconUi = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/homeIcon.jpg"), (50, 50))
         self.homeIconButton = pygame.Rect(25, self.height - 75, 50, 50)
 
         self.bigText = self.font2.render("R", 10, "black")
 
         self.rainDropSpeed = 175
         self.raindrops = []
-        self.droplet = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "drop.png")), (16, 18))
+        self.droplet = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/drop.png"), (16, 18))
         self.rainfall = pygame.event.custom_type()
         pygame.time.set_timer(self.rainfall, self.rainDropSpeed)
         self.lastDecrement = 0

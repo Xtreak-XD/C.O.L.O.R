@@ -65,7 +65,7 @@ class O1Game:
             self.destroyMole = pygame.event.custom_type()
             pygame.time.set_timer(self.destroyMole, 3300)
             
-            self.mole = pygame.transform.scale(pygame.image.load(os.path.join(self.imageFolder, "mole.png")), (self.playerWidth + 50, self.playerHeight + 30))
+            self.mole = pygame.transform.scale(pygame.image.load("C.O.L.O.R/PNG Files/mole.png"), (self.playerWidth + 50, self.playerHeight + 30))
             mixer.music.load(os.path.join(self.soundFolder, "fryingPanAudio.mp3"))
             
             while self.run:

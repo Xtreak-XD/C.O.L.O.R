@@ -23,8 +23,10 @@ class GameMenu:
         self.font2 = SysFont("comicsans", 75)
         
         currentDir = os.path.dirname(os.path.abspath(__file__))
+        print(currentDir)
         imageFolder = os.path.join(currentDir, "..", "PNG Files")
- 
+        
+
         # Load images...
         try:
             self.rainbow = pygame.transform.scale(
